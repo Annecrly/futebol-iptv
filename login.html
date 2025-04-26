@@ -37,12 +37,18 @@
   <button onclick="login()">Entrar</button>
 
   <script>
+    // Verifica se o usuário já está logado
+    if(localStorage.getItem("loggedIn") === "true") {
+      window.location.href = "index.html"; // Se já tiver logado, redireciona
+    }
+
     function login() {
       var user = document.getElementById('username').value;
       var pass = document.getElementById('password').value;
 
       // Defina seu usuário e senha aqui:
       if (user === 'futebol' && pass === '1234') {
+        localStorage.setItem("loggedIn", "true"); // Salva o estado de login
         window.location.href = "index.html"; // Redireciona para os canais
       } else {
         alert('Usuário ou senha incorretos!');
