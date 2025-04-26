@@ -10,28 +10,27 @@
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      margin-bottom: 30px;
+      margin-top: 100px;
     }
     input {
+      display: block;
+      margin: 10px auto;
       padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      border: 1px solid #444;
       width: 80%;
-      background-color: #222;
+      max-width: 300px;
+      background-color: #1e1e1e;
+      border: 1px solid #333;
       color: white;
+      border-radius: 5px;
     }
     button {
       padding: 10px 20px;
       background-color: #00c853;
-      color: white;
       border: none;
+      color: white;
       border-radius: 5px;
       cursor: pointer;
+      margin-top: 10px;
     }
     button:hover {
       background-color: #00b248;
@@ -39,27 +38,30 @@
   </style>
 </head>
 <body>
-  <h1>Login - Futebol IPTV</h1>
+
+  <h1>Login Futebol IPTV</h1>
+
   <form id="loginForm">
-    <input type="text" id="username" placeholder="Usuário" required><br>
-    <input type="password" id="password" placeholder="Senha" required><br>
+    <input type="text" id="username" placeholder="Usuário" required>
+    <input type="password" id="password" placeholder="Senha" required>
     <button type="submit">Entrar</button>
   </form>
 
   <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      
-      const user = document.getElementById('username').value;
-      const pass = document.getElementById('password').value;
+
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
 
       if (user === 'futebol' && pass === 'futebol1224') {
         localStorage.setItem('loggedIn', 'true');
-        window.location.href = 'canais.html'; // Redireciona para a página de canais
+        window.location.href = 'canais.html'; // página de canais que você vai criar
       } else {
-        alert('Usuário ou senha incorretos');
+        alert('Usuário ou senha incorretos!');
       }
     });
   </script>
+
 </body>
 </html>
