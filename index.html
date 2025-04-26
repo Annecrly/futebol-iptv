@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futebol IPTV</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    #busca {
+      width: 90%;
+      padding: 10px;
+      margin: 20px auto;
+      display: block;
+      font-size: 18px;
+      border-radius: 5px;
+      border: none;
+    }
+    .categoria {
+      margin: 30px 20px;
+    }
+    .categoria h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+    .canais {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+    .canais::-webkit-scrollbar {
+      height: 8px;
+    }
+    .canais::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 10px;
+    }
+    .canal {
+      flex: 0 0 auto;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 8px;
+      width: 150px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .canal:hover {
+      background-color: #333;
+    }
+    .canal img {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .canal span {
+      display: block;
+      font-size: 16px;
+    }
+    #player {
+      width: 90%;
+      max-width: 800px;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+      background-color: black;
+    }
+    @media (max-width: 600px) {
+      .canal {
+        width: 120px;
+      }
+      .canal img {
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>Futebol IPTV</header>
+
+<input type="text" id="busca" placeholder="Buscar canal..." onkeyup="buscarCanal()">
+
+<video id="player" controls autoplay></video>
+
+<div id="conteudo">
+
+  <div class="categoria" id="brasileirao">
+    <h2>Brasileirão</h2>
+    <div class="canais">
+      <div class="canal" onclick="trocarCanal('https://seulinkm3u8.com/brasileirao1.m3u8')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/SporTV_logo.png" alt="Sportv">
+        <span>Sportv</span>
+      </div>
+      <div class="canal" onclick="trocarCanal('https://seulinkm3u8.com/brasileirao2.m3u8')">
+        <img src="https://logodownload.org/wp-content/uploads/2017/04/premiere-logo-4.png" alt="Premiere">
+        <span>Premiere</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="categoria" id="champions">
+    <h2>Champions League</h2>
+    <div class="canais">
+      <div class="canal" onclick="trocarCanal('https://seulinkm3u8.com/champions1.m3u8')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/TNT_Sports_logo_2021.svg" alt="TNT Sports">
+        <span>TNT Sports</span>
+      </div>
+      <div class="canal" onclick="trocarCanal('https://seulinkm3u8.com/champions2.m3u8')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Space_logo.png" alt="Space">
+        <span>Space</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="categoria" id="times">
+    <h2>Times</h2>
+    <div class="canais">
+      <div class="canal" onclick="trocarCanal('https://seulinkm3u8.com/times1.m3u8')">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/9/9f/CRF_logo.png" alt="Flamengo">
+        <span>Canal Flamengo</span>
+      </div>
+      <div class="canal" onclick="trocarCanal('https://seulinkm3u8.com/times2.m3u8')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Corinthians_logo.png" alt="Corinthians">
+        <span>Canal Corinthians</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function trocarCanal(link) {
+  var player = document.getElementById('player');
+  player.src = link;
+  player.play();
+}
+
+function buscarCanal() {
+  var input = document.getElementById('busca');
+  var filtro = input.value.toUpperCase();
+  var canais = document.querySelectorAll('.canal');
+
+  canais.forEach(function(canal) {
+    if (canal.innerText.toUpperCase().indexOf(filtro) > -1) {
+      canal.style.display = "";
+    } else {
+      canal.style.display = "none";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
