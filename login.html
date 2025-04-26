@@ -3,56 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Futebol IPTV</title>
+  <title>Login - Futebol IPTV</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #121212;
+      background-color: #121212;
       color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
-      margin-top: 100px;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 30px;
     }
     input {
       padding: 10px;
       margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #444;
       width: 80%;
-      max-width: 300px;
+      background-color: #222;
+      color: white;
     }
     button {
       padding: 10px 20px;
       background-color: #00c853;
       color: white;
       border: none;
+      border-radius: 5px;
       cursor: pointer;
     }
     button:hover {
-      background-color: #00b342;
+      background-color: #00b248;
     }
   </style>
 </head>
 <body>
-  <h1>Login</h1>
-  <input type="text" id="username" placeholder="Usuário"><br>
-  <input type="password" id="password" placeholder="Senha"><br>
-  <button onclick="login()">Entrar</button>
+  <h1>Login - Futebol IPTV</h1>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Usuário" required><br>
+    <input type="password" id="password" placeholder="Senha" required><br>
+    <button type="submit">Entrar</button>
+  </form>
 
   <script>
-    if(localStorage.getItem("loggedIn") === "true") {
-      window.location.href = "index.html"; // Já logado? Vai direto
-    }
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
 
-    function login() {
-      var user = document.getElementById('username').value;
-      var pass = document.getElementById('password').value;
-
-      // Novo usuário e senha
-      if (user === 'futebol' && pass === 'futebol224') {
-        localStorage.setItem("loggedIn", "true");
-        window.location.href = "index.html";
+      if (user === 'futebol' && pass === 'futebol1224') {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'canais.html'; // Redireciona para a página de canais
       } else {
-        alert('Usuário ou senha incorretos!');
+        alert('Usuário ou senha incorretos');
       }
-    }
+    });
   </script>
 </body>
 </html>
